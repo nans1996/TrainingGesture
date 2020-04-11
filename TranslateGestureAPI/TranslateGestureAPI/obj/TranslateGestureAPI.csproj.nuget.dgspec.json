@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nasty\\Documents\\GitHub\\TrainingGesture\\TranslateGestureAPI\\TranslateGestureAPI\\TranslateGestureAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nasty\\Documents\\GitHub\\TrainingGesture\\TranslateGestureAPI\\TranslateGestureAPI\\TranslateGestureAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nasty\\Documents\\GitHub\\TrainingGesture\\TranslateGestureAPI\\TranslateGestureAPI\\TranslateGestureAPI.csproj",
+        "projectName": "TranslateGestureAPI",
+        "projectPath": "C:\\Users\\nasty\\Documents\\GitHub\\TrainingGesture\\TranslateGestureAPI\\TranslateGestureAPI\\TranslateGestureAPI.csproj",
+        "packagesPath": "C:\\Users\\nasty\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nasty\\Documents\\GitHub\\TrainingGesture\\TranslateGestureAPI\\TranslateGestureAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nasty\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Microsoft.ML.ImageAnalytics": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Microsoft.ML.TensorFlow": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Microsoft.ML.TensorFlow.Redist": {
+              "target": "Package",
+              "version": "[0.14.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
