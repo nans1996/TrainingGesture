@@ -11,7 +11,7 @@ namespace TranslateGestureAPI
     public class Translate
     {
         
-       public static string TranslateMethod()
+       public static string TranslateMethod(byte[] ByteImage)
         {
             var context = new MLContext();
             var data = context.Data.LoadFromTextFile<ImageData>("./labels.csv", separatorChar: ';');
@@ -42,10 +42,11 @@ namespace TranslateGestureAPI
             //the end обучения?
 
             var predictionFunc = context.Model.CreatePredictionEngine<ImageData, imagePrediction>(model);
-            var singlePrediction = predictionFunc.Predict(new ImageData
-            {
-                ImagePath = Path.Combine(Environment.CurrentDirectory, "images", "a2.jpg")
-            });
+            var singlePrediction = predictionFunc.Predict(new ImageData());
+            //{
+            //   // ImagePath = Path.Combine(Environment.CurrentDirectory, "images", "a2.jpg")
+            //  ByteImage
+            //});
 
             string answer = "Image " +Path.GetFileName(singlePrediction.ImagePath)+ " was predicted as a " + singlePrediction.PredictedLabelValue +
              " with a score of " + singlePrediction.Score.Max();

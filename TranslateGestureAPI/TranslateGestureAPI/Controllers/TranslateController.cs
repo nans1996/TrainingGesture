@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TranslateGestureAPI.Model;
 
 namespace TranslateGestureAPI.Controllers
 {
@@ -15,7 +16,7 @@ namespace TranslateGestureAPI.Controllers
         [HttpGet]
         public String Get()
         {
-            return Translate.TranslateMethod();
+            return "value";
         }
 
         // GET: api/Translate/5
@@ -27,8 +28,9 @@ namespace TranslateGestureAPI.Controllers
 
         // POST: api/Translate
         [HttpPost]
-        public void Post([FromBody] string value)
+        public String Post([FromBody] ImageDataRequest imageDataRequest)
         {
+            return Translate.TranslateMethod(imageDataRequest.Data);
         }
 
         // PUT: api/Translate/5
