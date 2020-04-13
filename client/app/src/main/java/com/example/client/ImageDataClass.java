@@ -1,6 +1,7 @@
 package com.example.client;
 
 public class ImageDataClass {
+
     private  String name;
     private byte[] data;
 

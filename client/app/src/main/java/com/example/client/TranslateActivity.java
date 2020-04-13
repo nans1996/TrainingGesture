@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -83,25 +84,26 @@ public class TranslateActivity extends Activity {
 protected  void postImage() {
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://localhost:44387/")
+          //  .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     ImageInterface service = retrofit.create(ImageInterface.class);
 
 
-    Call call = service.translateImage(convertBitmapToBite());
-    call.enqueue(new Callback() {
+    Call call = service.translateImage();
+    call.enqueue(new Callback<String>() {
         @Override
         public void onResponse(Call call, Response response) {
             if(response.isSuccessful()) {
-                Log.println(1, "запрос ","true");
+               System.out.println("запрос true");
             } else {
-                Log.println(2,"запрос ","false");
+                System.out.println("запрос false");
             }
         }
 
         @Override
         public void onFailure(Call call, Throwable t) {
-
+System.out.println("mistake "+t);
         }
     });
 }
