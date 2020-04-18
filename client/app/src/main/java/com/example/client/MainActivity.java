@@ -117,20 +117,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             toMenu(null);
-//                            // [START_EXCLUDE]
-//                            checkForMultiFactorFailure(task.getException());
-//                            // [END_EXCLUDE]
                         }
-
-                        // [START_EXCLUDE]
-//                        if (!task.isSuccessful()) {
-//                            mStatusTextView.setText(R.string.auth_failed);
-//                        }
-//                        hideProgressBar();
-//                        // [END_EXCLUDE]
                     }
                 });
-        // [END sign_in_with_email]
     }
 
 //    private void signOut() {
@@ -178,31 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-//    private void updateUI(FirebaseUser user) {
-//        hideProgressBar();
-//        if (user != null) {
-//            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-//                    user.getEmail(), user.isEmailVerified()));
-//            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-//
-////            findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
-////            findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
-////            findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
-//
-//            if (user.isEmailVerified()) {
-//                findViewById(R.id.verifyEmailButton).setVisibility(View.GONE);
-//            } else {
-//                findViewById(R.id.verifyEmailButton).setVisibility(View.VISIBLE);
-//            }
-//        } else {
-//            mStatusTextView.setText(R.string.signed_out);
-//            mDetailTextView.setText(null);
-//
-//            findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
-//            findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
-//            findViewById(R.id.signedInButtons).setVisibility(View.GONE);
-//        }
-//    }
         @Override
         public void onClick(View v) {
             switch (v.getId()) {

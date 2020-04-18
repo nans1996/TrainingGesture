@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -82,20 +85,26 @@ public class TranslateActivity extends Activity {
     }
 
 protected  void postImage() {
+       Gson gson  = new GsonBuilder()
+               .setLenient()
+               .create();
+
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://localhost:44387/")
-          //  .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://192.168.1.152:44387/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(OkhttpClass.getUnsafeOkHttpClient())
             .build();
 
     ImageInterface service = retrofit.create(ImageInterface.class);
 
 
-    Call call = service.translateImage();
+    Call<String> call = service.translateImage();
     call.enqueue(new Callback<String>() {
         @Override
-        public void onResponse(Call call, Response response) {
+        public void onResponse(Call<String> call, Response<String> response) {
             if(response.isSuccessful()) {
                System.out.println("запрос true");
+               System.out.println(response.body());
             } else {
                 System.out.println("запрос false");
             }

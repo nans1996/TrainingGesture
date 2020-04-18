@@ -16,7 +16,7 @@ namespace TranslateGestureAPI.Controllers
         [HttpGet]
         public String Get()
         {
-            return "value";
+            return "values:[{val: \"value\"}]";
         }
 
         // GET: api/Translate/5
