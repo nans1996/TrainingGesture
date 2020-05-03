@@ -40,6 +40,10 @@ namespace TranslateGestureAPI.Controllers
             {
                 ImageDataRequest image = JsonConvert.DeserializeObject<ImageDataRequest>(img.ToString());
                 byte[] b = (byte[])(Array)image.data;
+                if (image.name == "defolt")
+                {
+                    image.name = Guid.NewGuid().ToString();
+                }
                 return Translate.TranslateMethod(b, image.name);
             }
            catch (Exception e)

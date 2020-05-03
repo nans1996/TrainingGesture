@@ -15,12 +15,11 @@ namespace TranslateGestureAPI
 
     public class Translate
     {
-        public static Boolean SavePhoto(byte[] byteImage, string nameImage)
+        public static bool SavePhoto(byte[] byteImage, string path)
         {
             try
             {
                 Image patternimage;
-                string path = Path.Combine(Environment.CurrentDirectory, "images\\userimage\\" + nameImage + ".jpg");
                 //сохранение
                 using (var stream = new MemoryStream(byteImage))
                 {
@@ -72,17 +71,20 @@ namespace TranslateGestureAPI
                 var predictionFunc = context.Model.CreatePredictionEngine<ImageData, imagePrediction>(model);
 
                 imagePrediction singlePrediction = null;
+                string pathPhoto = Path.Combine(Environment.CurrentDirectory, "images\\userimage\\" + nameImage + ".jpg");
 
-                if (SavePhoto(byteImage, nameImage))
+                if (SavePhoto(byteImage, pathPhoto))
                 {
+                    string path = Path.Combine(Environment.CurrentDirectory, "images/userimage", nameImage + ".jpg");
                     singlePrediction = predictionFunc.Predict(new ImageData
                     {
-                        ImagePath = Path.Combine(Environment.CurrentDirectory, "images/userimage", nameImage + ".jpg")
-                    });
+                        ImagePath = Path.Combine(Environment.CurrentDirectory, "images\\a.jpg")
+                }) ;
 
+                    File.Delete(path);
                 }
 
-                string answer = "Image " + Path.GetFileName(singlePrediction.ImagePath) + " was predicted as a " + singlePrediction.PredictedLabelValue +
+                string answer = "Image was predicted as a " + singlePrediction.PredictedLabelValue +
                  " with a score of " + singlePrediction.Score.Max();
 
                 Console.WriteLine(answer);
