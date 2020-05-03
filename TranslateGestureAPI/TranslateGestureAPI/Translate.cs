@@ -1,6 +1,9 @@
 ﻿using Microsoft.ML;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,10 +11,33 @@ using TranslateGestureAPI.Model;
 
 namespace TranslateGestureAPI
 {
+   
+
     public class Translate
     {
-        
-       public static string TranslateMethod(byte[] ByteImage)
+        public static Boolean SavePhoto(byte[] byteImage, string nameImage)
+        {
+            try
+            {
+                Image patternimage;
+                string path = Path.Combine(Environment.CurrentDirectory, "images\\userimage\\" + nameImage + ".jpg");
+                //сохранение
+                using (var stream = new MemoryStream(byteImage))
+                {
+                    patternimage = new Bitmap(stream);
+                    patternimage.Save(path, ImageFormat.Png);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e);
+                return false;
+            }
+
+        }
+
+        public static string TranslateMethod(byte[] byteImage, string nameImage)
         {
             var context = new MLContext();
             var data = context.Data.LoadFromTextFile<ImageData>("./labels.csv", separatorChar: ';');
@@ -40,20 +66,33 @@ namespace TranslateGestureAPI
             Console.WriteLine($"Log loss - {metrics.LogLoss}");
 
             //the end обучения?
+            try
+            {
 
-            var predictionFunc = context.Model.CreatePredictionEngine<ImageData, imagePrediction>(model);
-            var singlePrediction = predictionFunc.Predict(new ImageData());
-            //{
-            //   // ImagePath = Path.Combine(Environment.CurrentDirectory, "images", "a2.jpg")
-            //  ByteImage
-            //});
+                var predictionFunc = context.Model.CreatePredictionEngine<ImageData, imagePrediction>(model);
 
-            string answer = "Image " +Path.GetFileName(singlePrediction.ImagePath)+ " was predicted as a " + singlePrediction.PredictedLabelValue +
-             " with a score of " + singlePrediction.Score.Max();
+                imagePrediction singlePrediction = null;
 
-            Console.WriteLine(answer);
+                if (SavePhoto(byteImage, nameImage))
+                {
+                    singlePrediction = predictionFunc.Predict(new ImageData
+                    {
+                        ImagePath = Path.Combine(Environment.CurrentDirectory, "images/userimage", nameImage + ".jpg")
+                    });
 
-            return answer;
+                }
+
+                string answer = "Image " + Path.GetFileName(singlePrediction.ImagePath) + " was predicted as a " + singlePrediction.PredictedLabelValue +
+                 " with a score of " + singlePrediction.Score.Max();
+
+                Console.WriteLine(answer);
+
+                return answer;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
     }

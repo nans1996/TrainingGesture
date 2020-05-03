@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 namespace TranslateGestureAPI.Model
 {
     public class ImageDataRequest
-    {
-        public string Name { get; set; }
-        public byte[] Data { get; set; }
+    { 
+        public SByte[] data { get; set; }
+        public string name { get; set; }
+       
 
     }
 }

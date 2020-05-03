@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TranslateGestureAPI.Model;
 
 namespace TranslateGestureAPI.Controllers
@@ -28,9 +34,20 @@ namespace TranslateGestureAPI.Controllers
 
         // POST: api/Translate
         [HttpPost]
-        public String Post([FromBody] ImageDataRequest imageDataRequest)
+        public String Post([FromBody] JObject img)
         {
-            return Translate.TranslateMethod(imageDataRequest.Data);
+            try
+            {
+                ImageDataRequest image = JsonConvert.DeserializeObject<ImageDataRequest>(img.ToString());
+                byte[] b = (byte[])(Array)image.data;
+                return Translate.TranslateMethod(b, image.name);
+            }
+           catch (Exception e)
+            {
+                return e.Message;
+            }
+
+
         }
 
         // PUT: api/Translate/5

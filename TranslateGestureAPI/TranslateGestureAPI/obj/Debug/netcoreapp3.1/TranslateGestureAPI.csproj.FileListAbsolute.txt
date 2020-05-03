@@ -117,4 +117,7 @@ C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGes
 C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libtensorflow.dylib
 C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libtensorflow_framework.dylib
 C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\tensorflow.dll
+C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\nasty\Documents\GitHub\TrainingGesture\TranslateGestureAPI\TranslateGestureAPI\obj\Debug\netcoreapp3.1\TranslateGestureAPI.MvcApplicationPartsAssemblyInfo.cache
