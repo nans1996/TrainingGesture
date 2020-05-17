@@ -1,45 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:padding="50dp"
+    android:layout_gravity="center"
+    tools:context=".activity.MainActivity">
 
-    <EditText
-        android:id="@+id/editTextEmail"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
+        android:src="@drawable/imageszhest"
+        android:layout_marginBottom="20dp"/>
+
+
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_span="1"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:padding="20dp"
+            android:text="Login" />
+
+
+
+
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_span="1"
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:inputType="textPassword" />
+
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
 
     <Button
         android:id="@+id/buttonLogIn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
         android:text="Sing in" />
 
     <Button
         android:id="@+id/buttonReg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:text="Sing up" />
+</TableRow>
+
+    <TableRow
+        android:layout_width="50dp">
+
+        <Button
+            android:id="@+id/buttonTranslate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:width="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Translate" />
+    </TableRow>
+
 
     <TextView
         android:id="@+id/textViewStatus"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_span="2"/>
 
     <TextView
         android:id="@+id/textViewDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_span="2" />
+</TableLayout>

@@ -1,4 +1,4 @@
-package com.example.client;
+package com.example.client.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.client.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button regButton;
         Button logInButton;
+        Button translateButton;
         private FirebaseAuth mAuth;
 
         @Override
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             logInButton = (Button)findViewById(R.id.buttonLogIn);
             regButton = (Button) findViewById(R.id.buttonReg);
+            translateButton = (Button)findViewById(R.id.buttonTranslate);
 
             mStatusTextView = (TextView)findViewById(R.id.textViewStatus);
             mDetailTextView = (TextView)findViewById(R.id.textViewDetail);
@@ -177,6 +179,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case  R.id.buttonReg: {
                     mStatusTextView.setText("");
                     createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                    break;
+                }
+                case R.id.buttonTranslate: {
+                    Intent intent = new Intent(this, TranslateActivity.class);
+                    startActivity(intent);
+                    break;
                 }
             }
         }
