@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="50dp"
+    android:layout_gravity="center_horizontal"
+    tools:context=".activity.AboutActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/imageszhest"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#000000"
+        android:text="Hello! Welcome to  TranslateGesture!" />
+
+    <TextView
+        android:id="@+id/textViewAbout"
+        android:layout_width="match_parent"
+        android:layout_height="311dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:text="This app will help you recognize deaf and dumb gestures for the English alphabet.
+        For recognition, go to the Translate page on the main page of the application and upload an image for recognition.
+        If you want to train the program yourself, go to the Training page and upload the image and its decryption for recognition.
+        When you log in to the application, you can recognize by the data that you trained the system yourself " />
+
+
+</TableLayout>

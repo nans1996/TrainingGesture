@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button regButton;
         Button logInButton;
         Button translateButton;
+        Button aboutButton;
         private FirebaseAuth mAuth;
 
         @Override
@@ -39,9 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            logInButton = (Button)findViewById(R.id.buttonLogIn);
-            regButton = (Button) findViewById(R.id.buttonReg);
-            translateButton = (Button)findViewById(R.id.buttonTranslate);
+            logInButton = findViewById(R.id.buttonLogIn);
+            regButton = findViewById(R.id.buttonReg);
+            translateButton = findViewById(R.id.buttonTranslate);
+            aboutButton = findViewById(R.id.buttonAbout);
 
             mStatusTextView = (TextView)findViewById(R.id.textViewStatus);
             mDetailTextView = (TextView)findViewById(R.id.textViewDetail);
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             logInButton.setOnClickListener(this);
             regButton.setOnClickListener(this);
+            translateButton.setOnClickListener(this);
+            aboutButton.setOnClickListener(this);
 
             // [START initialize_auth]
             // Initialize Firebase Auth
@@ -183,6 +187,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 case R.id.buttonTranslate: {
                     Intent intent = new Intent(this, TranslateActivity.class);
+                    startActivity(intent);
+                    break;
+                }
+                case R.id.buttonAbout: {
+                    Intent intent = new Intent(this, AboutActivity.class);
                     startActivity(intent);
                     break;
                 }

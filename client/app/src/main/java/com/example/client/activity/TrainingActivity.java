@@ -7,6 +7,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -74,6 +75,7 @@ public class TrainingActivity extends AppCompatActivity {
                         final Uri imageUri = ImageReturnedIntent.getData();
                         final InputStream imageinputStream = getContentResolver().openInputStream(imageUri);
                         selectBitmap = BitmapFactory.decodeStream(imageinputStream);
+                        imageview.setRotation(90);
                         imageview.setImageBitmap(selectBitmap);
                         buttonSend.setVisibility(View.VISIBLE);
                         textMessageView.setVisibility(View.VISIBLE);

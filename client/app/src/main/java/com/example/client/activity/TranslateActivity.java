@@ -1,5 +1,6 @@
 package com.example.client.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,12 +31,13 @@ import com.google.gson.GsonBuilder;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
-public class TranslateActivity extends Activity {
+public class TranslateActivity extends AppCompatActivity {
 
     private ImageView imageview;
     private  final int Pick_image = 1;
     Bitmap selectBitmap;
     private FirebaseAuth mAuth;
+    Button sendbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class TranslateActivity extends Activity {
 
         imageview = (ImageView) findViewById(R.id.imageView);
         Button imagebutton = (Button)findViewById(R.id.buttonLoad);
-        Button sendbutton = (Button) findViewById(R.id.buttonSend);
+        sendbutton = (Button) findViewById(R.id.buttonSend);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -75,7 +77,9 @@ public class TranslateActivity extends Activity {
                         final Uri imageUri = ImageReturnedIntent.getData();
                         final InputStream imageinputStream = getContentResolver().openInputStream(imageUri);
                         selectBitmap = BitmapFactory.decodeStream(imageinputStream);
+                        imageview.setRotation(90);
                         imageview.setImageBitmap(selectBitmap);
+                        sendbutton.setVisibility(View.VISIBLE);
 
                     } catch (Exception e) {
                         e.getStackTrace();

@@ -16,22 +16,34 @@
         android:layout_marginBottom="20dp"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonSettingMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Setting" />
 
     <Button
-        android:id="@+id/buttonTraining"
+        android:id="@+id/buttonTrainingMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Training" />
 
     <Button
-        android:id="@+id/buttonTranslate"
+        android:id="@+id/buttonTranslateMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Translate" />
+
+    <Button
+        android:id="@+id/buttonHistoryMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History" />
+
+    <Button
+        android:id="@+id/buttonAboutMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About" />
 
     <Button
         android:id="@+id/buttonOut"
