@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="images\userimage\" />
-    <Folder Include="InceptionModel\" />
   </ItemGroup>
 
   <ItemGroup>

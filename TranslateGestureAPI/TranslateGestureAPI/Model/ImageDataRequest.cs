@@ -9,7 +9,7 @@ namespace TranslateGestureAPI.Model
     { 
         public SByte[] data { get; set; }
         public string name { get; set; }
-       
+        public bool auth { get; set; }
 
     }
 }
