@@ -12,15 +12,6 @@ namespace TranslateGestureAPI
 {
     public class Training
     {
-        public static void AddInfoCSV(string pathFile, string path, string value)
-        {
-            FileElements csvRecord = new FileElements(path, value);
-            using (var writer = new StreamWriter(pathFile))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            {
-                csv.WriteRecord(csvRecord);
-            }
-        }
 
         public static string GenerateTranslateList(byte[] byteImage, string token, string value)
         {
@@ -43,11 +34,9 @@ namespace TranslateGestureAPI
                 if (!file)
                 {
                     File.WriteAllText(pathFile, pathUser+","+value + Environment.NewLine);
-                    //AddInfoCSV(pathFile, pathUser, value);
                 }
                 else
                 {
-                    // AddInfoCSV(pathFile, pathUser, value);
                     File.AppendAllText(pathFile, pathUser + "," + value+Environment.NewLine);
                 }
                 return "Successful";
