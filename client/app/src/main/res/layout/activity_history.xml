@@ -20,7 +20,6 @@
             android:id="@+id/textHistory1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:layout_weight="3"
             android:text="Value"
             android:textAlignment="center"
@@ -30,7 +29,6 @@
             android:id="@+id/textHistory2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:layout_weight="3"
             android:text="Message"
             android:textAlignment="center"
@@ -40,13 +38,40 @@
             android:id="@+id/textHistory3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:layout_weight="3"
             android:text="Date"
             android:textAlignment="center"
             android:textStyle="bold" />
     </TableRow>
 
+    <TableRow  android:layout_marginTop="20dp">
 
+        <TextView
+            android:id="@+id/textRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="a"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/textRow2"
+            android:layout_width="50dp"
+            android:layout_height="78dp"
+            android:layout_weight="3"
+            android:text="Image was predicted as a a with a score of 0,5358181"
+            android:textAlignment="center"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="20.05.2020"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+    </TableRow>
 
 </TableLayout>

@@ -8,6 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -62,6 +63,13 @@ public class TrainingActivity extends AppCompatActivity {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, Pick_image);
+            }
+        });
+
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postImage();
             }
         });
     }
@@ -119,6 +127,7 @@ public class TrainingActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     System.out.println("запрос true");
                     System.out.println(response.body());
+                    resultDialog(response.body());
                 } else {
                     System.out.println("запрос false");
                 }
@@ -129,5 +138,14 @@ public class TrainingActivity extends AppCompatActivity {
                 System.out.println("mistake "+t);
             }
         });
+    }
+
+    public void resultDialog(String result) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(TrainingActivity.this);
+        builder.setTitle("Result")
+                .setIcon(R.drawable.zhest_icon)
+                .setMessage(result)
+                .setPositiveButton("Ok", null)
+                .create().show();
     }
 }

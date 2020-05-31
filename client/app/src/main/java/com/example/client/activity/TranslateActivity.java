@@ -1,6 +1,7 @@
 package com.example.client.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +30,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Console;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class TranslateActivity extends AppCompatActivity {
@@ -104,40 +107,55 @@ public class TranslateActivity extends AppCompatActivity {
     }
 
     protected void postImage() {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://192.168.1.152:44387/")
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(OkhttpClass.getUnsafeOkHttpClient())
+                    .build();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://192.168.1.152:44387/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(OkhttpClass.getUnsafeOkHttpClient())
-                .build();
-
-        ImageInterface service = retrofit.create(ImageInterface.class);
+            ImageInterface service = retrofit.create(ImageInterface.class);
 
 
-    Call<String> call = service.translateImage(convertBitmapToBite());
-    call.enqueue(new Callback<String>() {
-        @Override
-        public void onResponse(Call<String> call, Response<String> response) {
-            if(response.isSuccessful()) {
-               System.out.println("запрос true");
-               System.out.println(response.body());
-              String result = response.body();
-               resultDialog(result);
-            } else {
-                System.out.println("запрос false");
-            }
-        }
+            Call call = service.translateImage(convertBitmapToBite());
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response)  {
+                    try (ResponseBody responseBody = (ResponseBody) response.body()) {
+                        if (response.isSuccessful()) {
+                            System.out.println("запрос true");
+                            System.out.println(response.body());
+                            System.out.println(responseBody);
+                            String result = ((ResponseBody) response.body()).string();
+                            int index = result.indexOf(",");
+                            String res = result.substring(index+1, index+3);
+                            if (Integer.parseInt(res) > 50) {
+                                resultDialog(result);
+                            } else {
+                                resultDialog("Failed to recognize image");
+                            }
 
-        @Override
-        public void onFailure(Call call, Throwable t) {
+                        } else {
+                            System.out.println("запрос false");
+                        }
+                    } catch (Exception e) {
 
-            System.out.println("mistake "+t);
-        }
-    });
+                    } finally {
+                        response.raw().body().close();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+
+                    System.out.println("mistake " + t);
+                }
+            });
+
+
 }
 
     @Override
