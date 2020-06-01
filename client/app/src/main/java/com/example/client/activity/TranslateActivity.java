@@ -33,6 +33,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
 
 public class TranslateActivity extends AppCompatActivity {
 
@@ -41,6 +42,10 @@ public class TranslateActivity extends AppCompatActivity {
     Bitmap selectBitmap;
     private FirebaseAuth mAuth;
     Button sendbutton;
+    int i = 0;
+    int i1 = 0;
+    int j =0;
+    int j1=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +73,10 @@ public class TranslateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postImage();
             }
+
         });
     }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent ImageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, ImageReturnedIntent);
@@ -96,13 +103,16 @@ public class TranslateActivity extends AppCompatActivity {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream(selectBitmap.getWidth() * selectBitmap.getHeight());
         selectBitmap.compress(Bitmap.CompressFormat.JPEG, 100, buffer);
         FirebaseUser currentuser = mAuth.getCurrentUser();
+        ImageDataClass img;
         boolean auth;
         if (currentuser != null) {
             auth = true;
+            img = new ImageDataClass(currentuser.getUid(), buffer.toByteArray(), auth);
         } else {
             auth = false;
+            img = new ImageDataClass(" ", buffer.toByteArray(), auth);
         }
-        ImageDataClass img = new ImageDataClass(currentuser.getUid(), buffer.toByteArray(), auth);
+
         return img;
     }
 
@@ -120,8 +130,8 @@ public class TranslateActivity extends AppCompatActivity {
             ImageInterface service = retrofit.create(ImageInterface.class);
 
 
-            Call call = service.translateImage(convertBitmapToBite());
-            call.enqueue(new Callback() {
+            Call<String> call = service.translateImage(convertBitmapToBite());
+            call.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call call, Response response)  {
                     try (ResponseBody responseBody = (ResponseBody) response.body()) {

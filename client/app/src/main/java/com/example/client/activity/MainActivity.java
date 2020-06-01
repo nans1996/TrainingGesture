@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onStart ();
             // Проверяем, вошел ли пользователь (не ноль) и обновляем ли пользователь соответствующим образом.
             FirebaseUser currentUser = mAuth.getCurrentUser ();
-            toMenu (currentUser);
+           // toMenu (currentUser);
         }
     // [END on_start_check_user]
 
